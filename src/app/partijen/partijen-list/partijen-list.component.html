@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#"
+       *ngFor="let partij of partijtjes; let i = index"
+       class="list-group-item clearfix">
+
+      <div class="row center-block ">
+        <div class="col-xs-5 pull-left btn btn-xs">{{partij.getSpeler1()}}</div>
+        <div class="col-xs-2"><h4 class="list-group-item-heading">{{i+1}}</h4></div>
+        <div class="col-xs-5 pull-right btn btn-xs">{{partij.getSpeler2()}}</div>
+      </div>
+    </a>
+    <app-partij-item></app-partij-item>
+  </div>
+</div>
