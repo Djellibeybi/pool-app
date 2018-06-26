@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Player} from '../shared/player.model';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-spelers',
@@ -8,10 +7,15 @@ import {Player} from '../shared/player.model';
 })
 export class SpelersComponent implements OnInit {
   newPlayer = '';
-  spelers: Player[] = [];
+
+  @Output() playerAdded = new EventEmitter<{ playerName: string }>();
+  @Output() playersCleared = new EventEmitter();
+  @Output() defaultsLoaded = new EventEmitter();
+
+  @Input() aantalSpelers;
+  @Input() gameStarted;
 
   constructor() {
-    this.onLoadDefaultPlayers();
   }
 
   ngOnInit() {
@@ -19,25 +23,16 @@ export class SpelersComponent implements OnInit {
   }
 
   onCreatePlayer() {
-    this.spelers.push({name: this.newPlayer});
-    console.log(this.spelers);
+    this.playerAdded.emit({playerName: this.newPlayer});
     this.newPlayer = '';
   }
 
   onClearPlayers() {
-    this.spelers = [];
-  }
-
-  onDeletePlayer(speler) {
-    this.spelers.splice(this.spelers.indexOf( speler ), 1);
+    this.playersCleared.emit();
   }
 
   onLoadDefaultPlayers() {
-    this.spelers = [
-      new Player( 'Chris'),
-      new Player('Udo'),
-      new Player( 'Pieter'),
-      new Player('Hendrik Jan')
-];
+    this.defaultsLoaded.emit();
   }
+
 }

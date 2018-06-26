@@ -7,7 +7,7 @@ import { PartijenComponent } from './partijen/partijen.component';
 import { HeaderComponent} from './header/header.component';
 import {FormsModule} from '@angular/forms';
 import { PartijenListComponent } from './partijen/partijen-list/partijen-list.component';
-import { PartijItemComponent } from './partijen/partijen-list/partij-item/partij-item.component';
+import { StartGameComponent } from './start-game/start-game.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { PartijItemComponent } from './partijen/partijen-list/partij-item/partij
     PartijenComponent,
     HeaderComponent,
     PartijenListComponent,
-    PartijItemComponent
+    StartGameComponent
   ],
   imports: [
     BrowserModule,

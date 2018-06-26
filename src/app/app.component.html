@@ -1,6 +1,29 @@
 <!--The content below is only a placeholder and can be replaced.-->
   <app-header></app-header>
+<hr>
+  <app-start-game aantalSpelers="{{aantalSpelers}}"
+                  gameStarted="{{gameStarted}}"
+  ></app-start-game>
   <hr>
-  <app-spelers></app-spelers>
-  <app-partijen></app-partijen>
+  <app-spelers
+    (playerAdded)="onPlayerAdded($event)"
+    (playersCleared)="onPlayersCleared()"
+    (defaultsLoaded)="onDefaultsLoaded()"
+    aantalSpelers="{{aantalSpelers}}"
+    gameStarted="{{gameStarted}}"
+  ></app-spelers>
+<div class="row" *ngFor="let speler of spelers">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-1" align="center">
+    <button class="btn btn-sm"
+            (click)="onDeletePlayer(speler)"
+    >x</button>
+  </div>
+  <div class="col-xs-6" align="left">
+ {{ speler.name }}
+  </div>
+</div>
+<hr>
 
+<app-partijen></app-partijen>
+gameStarted: {{this.gameStarted}}
